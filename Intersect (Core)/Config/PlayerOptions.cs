@@ -40,6 +40,11 @@
         public int MaxStat = 255;
 
         /// <summary>
+        /// How many points should be added when using the Multi Stat Button
+        /// </summary>
+        public int MultiAlloc = 5;
+
+        /// <summary>
         /// How long a player must wait before sending a trade/party/friend request after the first as been denied.
         /// </summary>
         public int RequestTimeout = 300000;

@@ -350,31 +350,31 @@ namespace Intersect.Client.Interface.Game.Character
                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.AbilityPower] == Options.MaxStatValue;
 
             mAddMultiAbilityPwrBtn.IsHidden =
-                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.AbilityPower] == Options.MaxStatValue - 5;
+                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.AbilityPower] == Options.MaxStatValue - Options.Player.MultiAlloc;
 
             mAddAttackBtn.IsHidden =
                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.Attack] == Options.MaxStatValue;
 
             mAddMultiAttackBtn.IsHidden =
-                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.Attack] == Options.MaxStatValue - 5;
+                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.Attack] == Options.MaxStatValue - Options.Player.MultiAlloc;
 
             mAddDefenseBtn.IsHidden = 
                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.Defense] == Options.MaxStatValue;
 
             mAddMultiDefenseBtn.IsHidden =
-                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.Defense] == Options.MaxStatValue - 5;
+                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.Defense] == Options.MaxStatValue - Options.Player.MultiAlloc;
 
             mAddMagicResistBtn.IsHidden = 
                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.MagicResist] == Options.MaxStatValue;
 
             mAddMultiMagicResistBtn.IsHidden =
-                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.MagicResist] == Options.MaxStatValue - 5;
+                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.MagicResist] == Options.MaxStatValue - Options.Player.MultiAlloc;
 
             mAddSpeedBtn.IsHidden =
                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.Speed] == Options.MaxStatValue;
 
             mAddMultiSpeedBtn.IsHidden =
-                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.Speed] == Options.MaxStatValue - 5;
+                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.Speed] == Options.MaxStatValue - Options.Player.MultiAlloc;
 
             for (var i = 0; i < Options.EquipmentSlots.Count; i++)
             {
