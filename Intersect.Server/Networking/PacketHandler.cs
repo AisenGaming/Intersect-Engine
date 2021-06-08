@@ -1768,8 +1768,17 @@ namespace Intersect.Server.Networking
             {
                 return;
             }
-
             player.UpgradeStat(packet.Stat);
+        }
+
+        public void HandlePacket(Client client, UpgradeMultipleStatPacket packet)
+        {
+            var player = client?.Entity;
+            if (player == null)
+            {
+                return;
+            }
+            player.UpgradeFiveStat(packet.Stat);
         }
 
         //HotbarUpdatePacket

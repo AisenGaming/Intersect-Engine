@@ -27,6 +27,8 @@ namespace Intersect.Client.Interface.Game.Character
 
         Button mAddAttackBtn;
 
+        Button mAddMultipleAttackBtn;
+
         Button mAddDefenseBtn;
 
         Button mAddMagicResistBtn;
@@ -102,9 +104,10 @@ namespace Intersect.Client.Interface.Game.Character
             statsLabel.SetText(Strings.Character.stats);
 
             mAttackLabel = new Label(mCharacterWindow, "AttackLabel");
-
             mAddAttackBtn = new Button(mCharacterWindow, "IncreaseAttackButton");
             mAddAttackBtn.Clicked += _addAttackBtn_Clicked;
+            mAddMultipleAttackBtn = new Button(mCharacterWindow, "IncreaseMultipleAttackButton");
+            mAddMultipleAttackBtn.Clicked += _addMultipleAttackBtn_Clicked;
 
             mDefenseLabel = new Label(mCharacterWindow, "DefenseLabel");
             mAddDefenseBtn = new Button(mCharacterWindow, "IncreaseDefenseButton");
@@ -158,6 +161,11 @@ namespace Intersect.Client.Interface.Game.Character
         void _addAttackBtn_Clicked(Base sender, ClickedEventArgs arguments)
         {
             PacketSender.SendUpgradeStat((int) Stats.Attack);
+        }
+
+        void _addMultipleAttackBtn_Clicked(Base sender, ClickedEventArgs arguments)
+        {
+            PacketSender.SendMultipleUpgradeStat((int)Stats.Attack);
         }
 
         //Methods
@@ -301,11 +309,15 @@ namespace Intersect.Client.Interface.Game.Character
             );
 
             mPointsLabel.SetText(Strings.Character.points.ToString(Globals.Me.StatPoints));
-            mAddAbilityPwrBtn.IsHidden = Globals.Me.StatPoints == 0 ||
-                                         Globals.Me.Stat[(int) Stats.AbilityPower] == Options.MaxStatValue;
+
+            mAddAbilityPwrBtn.IsHidden = 
+                Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.AbilityPower] == Options.MaxStatValue;
 
             mAddAttackBtn.IsHidden =
                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.Attack] == Options.MaxStatValue;
+
+            mAddMultipleAttackBtn.IsHidden =
+                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.Attack] > Options.MaxStatValue - 5;
 
             mAddDefenseBtn.IsHidden = Globals.Me.StatPoints == 0 ||
                                       Globals.Me.Stat[(int) Stats.Defense] == Options.MaxStatValue;
