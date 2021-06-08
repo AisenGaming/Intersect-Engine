@@ -350,36 +350,40 @@ namespace Intersect.Client.Interface.Game.Character
                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.AbilityPower] == Options.MaxStatValue;
 
             mAddMultiAbilityPwrBtn.IsHidden =
-                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.AbilityPower] == Options.MaxStatValue - Options.Player.MultiAlloc;
-            if (Options.Player.MultiAllocTooltip)  mAddMultiAbilityPwrBtn.SetToolTipText("+" + Options.Player.MultiAlloc);
+                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.AbilityPower] == Options.MaxStatValue - Options.Player.MultiAlloc; 
 
             mAddAttackBtn.IsHidden =
                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.Attack] == Options.MaxStatValue;
 
             mAddMultiAttackBtn.IsHidden =
                 Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.Attack] == Options.MaxStatValue - Options.Player.MultiAlloc;
-            if (Options.Player.MultiAllocTooltip)  mAddMultiAttackBtn.SetToolTipText("+" + Options.Player.MultiAlloc);
 
             mAddDefenseBtn.IsHidden = 
                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.Defense] == Options.MaxStatValue;
 
             mAddMultiDefenseBtn.IsHidden =
                 Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.Defense] == Options.MaxStatValue - Options.Player.MultiAlloc;
-            if (Options.Player.MultiAllocTooltip)  mAddMultiDefenseBtn.SetToolTipText("+" + Options.Player.MultiAlloc);
 
             mAddMagicResistBtn.IsHidden = 
                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.MagicResist] == Options.MaxStatValue;
 
             mAddMultiMagicResistBtn.IsHidden =
                 Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.MagicResist] == Options.MaxStatValue - Options.Player.MultiAlloc;
-            if (Options.Player.MultiAllocTooltip)  mAddMultiMagicResistBtn.SetToolTipText("+" + Options.Player.MultiAlloc);
 
             mAddSpeedBtn.IsHidden =
                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.Speed] == Options.MaxStatValue;
 
             mAddMultiSpeedBtn.IsHidden =
                 Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.Speed] == Options.MaxStatValue - Options.Player.MultiAlloc;
-            if (Options.Player.MultiAllocTooltip) mAddMultiSpeedBtn.SetToolTipText("+" + Options.Player.MultiAlloc);
+
+            if (Options.Player.MultiAllocTooltip)
+            {
+                mAddMultiAbilityPwrBtn.SetToolTipText("+" + Options.Player.MultiAlloc);
+                mAddMultiAttackBtn.SetToolTipText("+" + Options.Player.MultiAlloc);
+                mAddMultiDefenseBtn.SetToolTipText("+" + Options.Player.MultiAlloc);
+                mAddMultiMagicResistBtn.SetToolTipText("+" + Options.Player.MultiAlloc);
+                mAddMultiSpeedBtn.SetToolTipText("+" + Options.Player.MultiAlloc);
+            }
 
             for (var i = 0; i < Options.EquipmentSlots.Count; i++)
             {
