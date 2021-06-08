@@ -31,7 +31,7 @@ namespace Intersect.Client.Interface.Game.Character
 
         Button mAddMagicResistBtn;
 
-        Button mAddSpeedBtn;
+        //Button mAddSpeedBtn;
 
         //Stats
         Label mAttackLabel;
@@ -109,11 +109,11 @@ namespace Intersect.Client.Interface.Game.Character
             mDefenseLabel = new Label(mCharacterWindow, "DefenseLabel");
             mAddDefenseBtn = new Button(mCharacterWindow, "IncreaseDefenseButton");
             mAddDefenseBtn.Clicked += _addDefenseBtn_Clicked;
-
+            
             mSpeedLabel = new Label(mCharacterWindow, "SpeedLabel");
-            mAddSpeedBtn = new Button(mCharacterWindow, "IncreaseSpeedButton");
-            mAddSpeedBtn.Clicked += _addSpeedBtn_Clicked;
-
+            //mAddSpeedBtn = new Button(mCharacterWindow, "IncreaseSpeedButton");
+            //mAddSpeedBtn.Clicked += _addSpeedBtn_Clicked;
+            
             mAbilityPwrLabel = new Label(mCharacterWindow, "AbilityPowerLabel");
             mAddAbilityPwrBtn = new Button(mCharacterWindow, "IncreaseAbilityPowerButton");
             mAddAbilityPwrBtn.Clicked += _addAbilityPwrBtn_Clicked;
@@ -145,11 +145,12 @@ namespace Intersect.Client.Interface.Game.Character
             PacketSender.SendUpgradeStat((int) Stats.AbilityPower);
         }
 
+        /*
         void _addSpeedBtn_Clicked(Base sender, ClickedEventArgs arguments)
         {
             PacketSender.SendUpgradeStat((int) Stats.Speed);
         }
-
+        */
         void _addDefenseBtn_Clicked(Base sender, ClickedEventArgs arguments)
         {
             PacketSender.SendUpgradeStat((int) Stats.Defense);
@@ -313,9 +314,8 @@ namespace Intersect.Client.Interface.Game.Character
             mAddMagicResistBtn.IsHidden = Globals.Me.StatPoints == 0 ||
                                           Globals.Me.Stat[(int) Stats.MagicResist] == Options.MaxStatValue;
 
-            mAddSpeedBtn.IsHidden =
-                Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.Speed] == Options.MaxStatValue;
-
+            //mAddSpeedBtn.IsHidden = Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.Speed] == Options.MaxStatValue;
+            
             for (var i = 0; i < Options.EquipmentSlots.Count; i++)
             {
                 if (Globals.Me.MyEquipment[i] > -1 && Globals.Me.MyEquipment[i] < Options.MaxInvItems)

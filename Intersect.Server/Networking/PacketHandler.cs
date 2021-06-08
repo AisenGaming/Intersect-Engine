@@ -1769,6 +1769,12 @@ namespace Intersect.Server.Networking
                 return;
             }
 
+            if (packet.Stat == 4)
+            {
+                player.Client.Disconnect("Possible Hacking Attempt", false);
+                return;
+            }
+
             player.UpgradeStat(packet.Stat);
         }
 
