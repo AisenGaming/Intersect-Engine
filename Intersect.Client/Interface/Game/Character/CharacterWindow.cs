@@ -350,31 +350,31 @@ namespace Intersect.Client.Interface.Game.Character
                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.AbilityPower] == Options.MaxStatValue;
 
             mAddMultiAbilityPwrBtn.IsHidden =
-                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.AbilityPower] + Options.Player.MultiAlloc > Options.MaxStatValue; 
+                Globals.Me.StatPoints < Options.Player.MultiAlloc || Globals.Me.Stat[(int) Stats.AbilityPower] + Options.Player.MultiAlloc > Options.MaxStatValue; 
 
             mAddAttackBtn.IsHidden =
                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.Attack] == Options.MaxStatValue;
 
             mAddMultiAttackBtn.IsHidden =
-                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.Attack] + Options.Player.MultiAlloc > Options.MaxStatValue;
+                Globals.Me.StatPoints < Options.Player.MultiAlloc || Globals.Me.Stat[(int) Stats.Attack] + Options.Player.MultiAlloc > Options.MaxStatValue;
 
             mAddDefenseBtn.IsHidden = 
                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.Defense] == Options.MaxStatValue;
 
             mAddMultiDefenseBtn.IsHidden =
-                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.Defense] + Options.Player.MultiAlloc > Options.MaxStatValue;
+                Globals.Me.StatPoints < Options.Player.MultiAlloc || Globals.Me.Stat[(int) Stats.Defense] + Options.Player.MultiAlloc > Options.MaxStatValue;
 
             mAddMagicResistBtn.IsHidden = 
                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.MagicResist] == Options.MaxStatValue;
 
             mAddMultiMagicResistBtn.IsHidden =
-                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.MagicResist] + Options.Player.MultiAlloc > Options.MaxStatValue;
+                Globals.Me.StatPoints < Options.Player.MultiAlloc || Globals.Me.Stat[(int) Stats.MagicResist] + Options.Player.MultiAlloc > Options.MaxStatValue;
 
             mAddSpeedBtn.IsHidden =
-                Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.Speed] == Options.MaxStatValue;
+                Globals.Me.StatPoints == Options.Player.MultiAlloc || Globals.Me.Stat[(int) Stats.Speed] == Options.MaxStatValue;
 
             mAddMultiSpeedBtn.IsHidden =
-                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.Speed] + Options.Player.MultiAlloc >= Options.MaxStatValue;
+                Globals.Me.StatPoints < Options.Player.MultiAlloc || Globals.Me.Stat[(int) Stats.Speed] + Options.Player.MultiAlloc >= Options.MaxStatValue;
 
             if (Options.Player.MultiAllocTooltip)
             {
