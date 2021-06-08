@@ -374,7 +374,7 @@ namespace Intersect.Client.Interface.Game.Character
                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.Speed] == Options.MaxStatValue;
 
             mAddMultiSpeedBtn.IsHidden =
-                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.Speed] + Options.Player.MultiAlloc >= Options.MaxStatValue ;
+                Globals.Me.StatPoints < 5 || Globals.Me.Stat[(int) Stats.Speed] + Options.Player.MultiAlloc >= Options.MaxStatValue;
 
             if (Options.Player.MultiAllocTooltip)
             {
