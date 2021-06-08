@@ -45,6 +45,11 @@
         public int MultiAlloc = 5;
 
         /// <summary>
+        /// Enable or Disable showing a tooltip with the MultiAlloc value
+        /// </summary>
+        public bool MultiAllocTooltip = true;
+
+        /// <summary>
         /// How long a player must wait before sending a trade/party/friend request after the first as been denied.
         /// </summary>
         public int RequestTimeout = 300000;
