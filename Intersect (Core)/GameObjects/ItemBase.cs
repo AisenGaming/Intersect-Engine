@@ -291,6 +291,18 @@ namespace Intersect.GameObjects
         [NotMapped]
         public int[] PercentageStatsGiven { get; set; }
 
+        public int MinimumAttack { get; set; }
+        public int MaximumAttack { get; set; }
+        public int MinimumAbilityPower { get; set; }
+        public int MaximumAbilityPower { get; set; }
+        public int MinimumDefense { get; set; }
+        public int MaximumDefense { get; set; }
+        public int MinimumMagicResist { get; set; }
+        public int MaximumMagicResist { get; set; }
+        public int MinimumSpeed { get; set; }
+        public int MaximumSpeed { get; set; }
+
+
         [Column("UsageRequirements")]
         [JsonIgnore]
         public string JsonUsageRequirements

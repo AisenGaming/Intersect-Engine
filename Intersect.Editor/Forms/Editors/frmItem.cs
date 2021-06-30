@@ -217,7 +217,6 @@ namespace Intersect.Editor.Forms.Editors
             lblSpd.Text = Strings.ItemEditor.speedbonus;
             lblMag.Text = Strings.ItemEditor.abilitypowerbonus;
             lblMR.Text = Strings.ItemEditor.magicresistbonus;
-            lblRange.Text = Strings.ItemEditor.bonusrange;
             lblBonusEffect.Text = Strings.ItemEditor.bonuseffect;
             lblEffectPercent.Text = Strings.ItemEditor.bonusamount;
             lblEquipmentAnimation.Text = Strings.ItemEditor.equipmentanimation;
@@ -331,11 +330,17 @@ namespace Intersect.Editor.Forms.Editors
                 nudMR.Value = mEditorItem.StatsGiven[3];
                 nudSpd.Value = mEditorItem.StatsGiven[4];
 
-                nudStrPercentage.Value = mEditorItem.PercentageStatsGiven[0];
-                nudMagPercentage.Value = mEditorItem.PercentageStatsGiven[1];
-                nudDefPercentage.Value = mEditorItem.PercentageStatsGiven[2];
-                nudMRPercentage.Value = mEditorItem.PercentageStatsGiven[3];
-                nudSpdPercentage.Value = mEditorItem.PercentageStatsGiven[4];
+                nudAttackMinimum.Value = mEditorItem.MinimumAttack;
+                nudMagicMinimum.Value = mEditorItem.MinimumAbilityPower;
+                nudDefenseMinimum.Value = mEditorItem.MinimumDefense;
+                nudMagicResistMinimum.Value = mEditorItem.MinimumMagicResist;
+                nudSpeedMinimum.Value = mEditorItem.MinimumSpeed;
+
+                nudAttackMaximum.Value = mEditorItem.MaximumAttack;
+                nudMagicMaximum.Value = mEditorItem.MaximumAbilityPower;
+                nudDefenseMaximum.Value = mEditorItem.MaximumDefense;
+                nudMagicResistMaximum.Value = mEditorItem.MaximumMagicResist;
+                nudSpeedMaximum.Value = mEditorItem.MaximumSpeed;
 
                 nudHealthBonus.Value = mEditorItem.VitalsGiven[0];
                 nudManaBonus.Value = mEditorItem.VitalsGiven[1];
@@ -350,7 +355,6 @@ namespace Intersect.Editor.Forms.Editors
                 cmbAttackSpeedModifier.SelectedIndex = mEditorItem.AttackSpeedModifier;
                 nudAttackSpeedValue.Value = mEditorItem.AttackSpeedValue;
                 nudScaling.Value = mEditorItem.Scaling;
-                nudRange.Value = mEditorItem.StatGrowth;
                 chkCanDrop.Checked = Convert.ToBoolean(mEditorItem.CanDrop);
                 chkCanBank.Checked = Convert.ToBoolean(mEditorItem.CanBank);
                 chkCanGuildBank.Checked = Convert.ToBoolean(mEditorItem.CanGuildBank);
@@ -749,11 +753,6 @@ namespace Intersect.Editor.Forms.Editors
             mEditorItem.Effect.Percentage = (int) nudEffectPercent.Value;
         }
 
-        private void nudRange_ValueChanged(object sender, EventArgs e)
-        {
-            mEditorItem.StatGrowth = (int) nudRange.Value;
-        }
-
         private void nudStr_ValueChanged(object sender, EventArgs e)
         {
             mEditorItem.StatsGiven[0] = (int) nudStr.Value;
@@ -779,29 +778,54 @@ namespace Intersect.Editor.Forms.Editors
             mEditorItem.StatsGiven[4] = (int) nudSpd.Value;
         }
 
-        private void nudStrPercentage_ValueChanged(object sender, EventArgs e)
+        private void nudAttackMinimum_ValueChanged(object sender, EventArgs e)
         {
-            mEditorItem.PercentageStatsGiven[0] = (int) nudStrPercentage.Value;
+            mEditorItem.MinimumAttack = (int) nudAttackMinimum.Value;
         }
 
-        private void nudMagPercentage_ValueChanged(object sender, EventArgs e)
+        private void nudAttackMaximum_ValueChanged(object sender, EventArgs e)
         {
-            mEditorItem.PercentageStatsGiven[1] = (int) nudMagPercentage.Value;
+            mEditorItem.MaximumAttack = (int) nudAttackMaximum.Value;
         }
 
-        private void nudDefPercentage_ValueChanged(object sender, EventArgs e)
+        private void nudAbilityPowerMinimum_ValueChanged(object sender, EventArgs e)
         {
-            mEditorItem.PercentageStatsGiven[2] = (int) nudDefPercentage.Value;
+            mEditorItem.MinimumAbilityPower = (int) nudMagicMinimum.Value;
         }
 
-        private void nudMRPercentage_ValueChanged(object sender, EventArgs e)
+        private void nudAbilityPowerMaximum_ValueChanged(object sender, EventArgs e)
         {
-            mEditorItem.PercentageStatsGiven[3] = (int) nudMRPercentage.Value;
+            mEditorItem.MaximumAbilityPower = (int) nudMagicMaximum.Value;
         }
 
-        private void nudSpdPercentage_ValueChanged(object sender, EventArgs e)
+        private void nudDefenseMinimum_ValueChanged(object sender, EventArgs e)
         {
-            mEditorItem.PercentageStatsGiven[4] = (int) nudSpdPercentage.Value;
+            mEditorItem.MinimumDefense = (int) nudDefenseMinimum.Value;
+        }
+
+        private void nudDefenseMaximum_ValueChanged(object sender, EventArgs e)
+        {
+            mEditorItem.MaximumDefense = (int) nudDefenseMaximum.Value;
+        }
+
+        private void nudMagicResistMinimum_ValueChanged(object sender, EventArgs e)
+        {
+            mEditorItem.MinimumMagicResist = (int) nudMagicResistMinimum.Value;
+        }
+
+        private void nudMagicResistMaximum_ValueChanged(object sender, EventArgs e)
+        {
+            mEditorItem.MaximumMagicResist = (int) nudMagicResistMaximum.Value;
+        }
+
+        private void nudSpeedMinimum_ValueChanged(object sender, EventArgs e)
+        {
+            mEditorItem.MinimumSpeed = (int) nudSpeedMinimum.Value;
+        }
+
+        private void nudSpeedMaximum_ValueChanged(object sender, EventArgs e)
+        {
+            mEditorItem.MaximumSpeed = (int) nudSpeedMaximum.Value;
         }
 
         private void nudBag_ValueChanged(object sender, EventArgs e)
@@ -1260,6 +1284,16 @@ namespace Intersect.Editor.Forms.Editors
 
 
         #endregion
+
+        private void lblStr_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

@@ -44,11 +44,16 @@ namespace Intersect.Server.Database
                 return;
             }
 
-            for (var i = 0; i < (int) Stats.StatCount; i++)
+            /*for (var i = 0; i < (int) Stats.StatCount; i++)
             {
                 // TODO: What the fuck?
                 StatBuffs[i] = Randomization.Next(-descriptor.StatGrowth, descriptor.StatGrowth + 1);
-            }
+            }*/
+            StatBuffs[(int)Stats.Attack] = Randomization.Next(descriptor.MinimumAttack, descriptor.MaximumAttack);
+            StatBuffs[(int)Stats.AbilityPower] = Randomization.Next(descriptor.MinimumAbilityPower, descriptor.MaximumAbilityPower);
+            StatBuffs[(int)Stats.Defense] = Randomization.Next(descriptor.MinimumDefense, descriptor.MaximumDefense);
+            StatBuffs[(int)Stats.MagicResist] = Randomization.Next(descriptor.MinimumMagicResist, descriptor.MaximumMagicResist);
+            StatBuffs[(int)Stats.Speed] = Randomization.Next(descriptor.MinimumSpeed, descriptor.MaximumSpeed);
         }
 
         public Item(Item item) : this(item.ItemId, item.Quantity, item.BagId, item.Bag)
