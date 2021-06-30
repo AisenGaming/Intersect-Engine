@@ -963,6 +963,22 @@ namespace Intersect.Server.Entities
                                                         dir = 2;
 
                                                         break;
+                                                    case 4:
+                                                        dir = 5;
+
+                                                        break;
+                                                    case 5:
+                                                        dir = 4;
+
+                                                        break;
+                                                    case 6:
+                                                        dir = 7;
+
+                                                        break;
+                                                    case 7:
+                                                        dir = 6;
+
+                                                        break;
                                                 }
                                             }
 
@@ -1056,6 +1072,22 @@ namespace Intersect.Server.Entities
                                             dir = 2;
 
                                             break;
+                                        case 4:
+                                            dir = 5;
+
+                                            break;
+                                        case 5:
+                                            dir = 4;
+
+                                            break;
+                                        case 6:
+                                            dir = 7;
+
+                                            break;
+                                        case 7:
+                                            dir = 6;
+
+                                            break;
                                     }
 
                                     if (CanMove(dir) == -1 || CanMove(dir) == -4)
@@ -1134,7 +1166,7 @@ namespace Intersect.Server.Entities
                         var i = Randomization.Next(0, 1);
                         if (i == 0)
                         {
-                            i = Randomization.Next(0, 4);
+                            i = Randomization.Next(0, 8);
                             if (CanMove(i) == -1)
                             {
                                 //check if NPC is snared or stunned

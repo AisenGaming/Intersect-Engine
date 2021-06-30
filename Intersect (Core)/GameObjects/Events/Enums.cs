@@ -94,6 +94,14 @@
 
         SetAnimation,
 
+        MoveUpLeft,
+
+        MoveUpRight,
+
+        MoveDownLeft,
+
+        MoveDownRight,
+
     }
 
     //ONLY ADD TO THE END OF THIS LIST ELSE FACE THE WRATH OF JC!!!!!

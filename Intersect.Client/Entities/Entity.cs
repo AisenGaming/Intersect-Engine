@@ -222,7 +222,7 @@ namespace Intersect.Client.Entities
         public byte Dir
         {
             get => mDir;
-            set => mDir = (byte) ((value + 4) % 4);
+            set => mDir = (byte) ((value + 8) % 8);
         }
 
         public virtual string TransformedSprite
@@ -569,10 +569,17 @@ namespace Intersect.Client.Entities
             }
             else if (IsMoving)
             {
+                void CheckOffset()
+                {
+                    if (OffsetY < 0) OffsetY = 0;
+                    if (OffsetX < 0) OffsetX = 0;
+                }
+
+                float deplacementTime = ecTime * Options.TileHeight / GetMovementTime();
                 switch (Dir)
                 {
-                    case 0:
-                        OffsetY -= (float) ecTime * (float) Options.TileHeight / GetMovementTime();
+                    case 0: // Up
+                        OffsetY -= deplacementTime;
                         OffsetX = 0;
                         if (OffsetY < 0)
                         {
@@ -581,8 +588,8 @@ namespace Intersect.Client.Entities
 
                         break;
 
-                    case 1:
-                        OffsetY += (float) ecTime * (float) Options.TileHeight / GetMovementTime();
+                    case 1: // Down
+                        OffsetY += deplacementTime;
                         OffsetX = 0;
                         if (OffsetY > 0)
                         {
@@ -591,8 +598,8 @@ namespace Intersect.Client.Entities
 
                         break;
 
-                    case 2:
-                        OffsetX -= (float) ecTime * (float) Options.TileHeight / GetMovementTime();
+                    case 2: // Left
+                        OffsetX -= deplacementTime;
                         OffsetY = 0;
                         if (OffsetX < 0)
                         {
@@ -601,13 +608,41 @@ namespace Intersect.Client.Entities
 
                         break;
 
-                    case 3:
-                        OffsetX += (float) ecTime * (float) Options.TileHeight / GetMovementTime();
+                    case 3: // Right
+                        OffsetX += deplacementTime;
                         OffsetY = 0;
                         if (OffsetX > 0)
                         {
                             OffsetX = 0;
                         }
+
+                        break;
+
+                    case 4: // UpLeft
+                        OffsetY -= deplacementTime;
+                        OffsetX -= deplacementTime;
+                        CheckOffset();
+
+                        break;
+
+                    case 5: // UpRight
+                        OffsetY -= deplacementTime;
+                        OffsetX += deplacementTime;
+                        CheckOffset();
+
+                        break;
+
+                    case 6: // DownLeft
+                        OffsetY += deplacementTime;
+                        OffsetX -= deplacementTime;
+                        CheckOffset();
+
+                        break;
+
+                    case 7: //DownRight
+                        OffsetY += deplacementTime;
+                        OffsetX += deplacementTime;
+                        CheckOffset();
 
                         break;
                 }
@@ -928,22 +963,40 @@ namespace Intersect.Client.Entities
                 destRectangle.X -= texture.GetWidth() / (SpriteFrames * 2);
                 switch (Dir)
                 {
-                    case 0:
+                    case 0: // Up
                         d = 3;
 
                         break;
-                    case 1:
+                    case 1: // Down
                         d = 0;
 
                         break;
-                    case 2:
+                    case 2: // Left
                         d = 1;
 
                         break;
-                    case 3:
+                    case 3: // Right
                         d = 2;
 
                         break;
+
+                    case 4: // UpLeft
+                        d = 1;
+
+                        break;
+                    case 5: // UpRight
+                        d = 2;
+
+                        break;
+                    case 6: // DownLeft
+                        d = 1;
+
+                        break;
+                    case 7: // DownRight
+                        d = 2;
+
+                        break;
+
                     default:
                         Dir = 0;
                         d = 3;
@@ -995,10 +1048,16 @@ namespace Intersect.Client.Entities
 
                 WorldPos = destRectangle;
 
+                int pDollIndex = Dir;
+                if (Dir == 4 || Dir == 6)
+                    pDollIndex = 2;
+                else if (Dir == 5 || Dir == 7)
+                    pDollIndex = 3;
+
                 //Order the layers of paperdolls and sprites
-                for (var z = 0; z < Options.PaperdollOrder[Dir].Count; z++)
+                for (var z = 0; z < Options.PaperdollOrder[pDollIndex].Count; z++)
                 {
-                    var paperdoll = Options.PaperdollOrder[Dir][z];
+                    var paperdoll = Options.PaperdollOrder[pDollIndex][z];
                     var equipSlot = Options.EquipmentSlots.IndexOf(paperdoll);
 
                     //Check for player
@@ -1145,6 +1204,23 @@ namespace Intersect.Client.Entities
 
                         break;
                     case 3:
+                        d = 2;
+
+                        break;
+
+                    case 4:
+                        d = 1;
+
+                        break;
+                    case 5:
+                        d = 2;
+
+                        break;
+                    case 6:
+                        d = 1;
+
+                        break;
+                    case 7:
                         d = 2;
 
                         break;

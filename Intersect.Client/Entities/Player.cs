@@ -910,27 +910,45 @@ namespace Intersect.Client.Entities
             }
 
 
+            var move = movex / 10 + movey;
+
             Globals.Me.MoveDir = -1;
             if (movex != 0f || movey != 0f)
             {
-                if (movey < 0)
+                switch (move)
                 {
-                    Globals.Me.MoveDir = 1;
-                }
+                    case 1.0f:
+                        Globals.Me.MoveDir = 0; // Up
 
-                if (movey > 0)
-                {
-                    Globals.Me.MoveDir = 0;
-                }
+                        break;
+                    case -1.0f:
+                        Globals.Me.MoveDir = 1; // Down
 
-                if (movex < 0)
-                {
-                    Globals.Me.MoveDir = 2;
-                }
+                        break;
+                    case -0.1f:
+                        Globals.Me.MoveDir = 2; // Left
 
-                if (movex > 0)
-                {
-                    Globals.Me.MoveDir = 3;
+                        break;
+                    case 0.1f:
+                        Globals.Me.MoveDir = 3; // Right
+
+                        break;
+                    case 0.9f:
+                        Globals.Me.MoveDir = 4; // UpLeft
+
+                        break;
+                    case 1.1f:
+                        Globals.Me.MoveDir = 5; // UpRight
+
+                        break;
+                    case -1.1f:
+                        Globals.Me.MoveDir = 6; // DownLeft
+
+                        break;
+                    case -0.9f:
+                        Globals.Me.MoveDir = 7; // DownRight
+
+                        break;
                 }
             }
 
@@ -1245,19 +1263,39 @@ namespace Intersect.Client.Entities
             var map = Globals.Me.CurrentMap;
             switch (Globals.Me.Dir)
             {
-                case 0:
+                case 0: // Up
                     y--;
 
                     break;
-                case 1:
+                case 1: // Down
                     y++;
 
                     break;
-                case 2:
+                case 2: // Left
                     x--;
 
                     break;
-                case 3:
+                case 3: // Right
+                    x++;
+
+                    break;
+                case 4: // UpLeft
+                    y--;
+                    x--;
+
+                    break;
+                case 5: // UpRight
+                    y--;
+                    x++;
+
+                    break;
+                case 6: // DownLeft
+                    y++;
+                    x--;
+
+                    break;
+                case 7: // DownRight
+                    y++;
                     x++;
 
                     break;
